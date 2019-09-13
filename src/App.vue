@@ -6,6 +6,7 @@
 
 <script>
 import Stats from './components/Stats'
+
 export default {
   name: 'app',
   components: {

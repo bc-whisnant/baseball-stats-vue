@@ -1,25 +1,31 @@
 <template>
-  <b-row class="mb-3">
-      <b-col cols="6" class="ml-auto mr-auto">
-        <b-form-input ref="searchInput" :value="value.input" @input="search()" placeholder="Search for team..."></b-form-input>
-      </b-col>
+  <b-container>
+    <b-row class="mb-5">
+      <input @input="onInput">
     </b-row>
+  </b-container>
 </template>
 
 <script>
 export default {
   name: 'Search',
-  props: ['value'],
+  model: {
+    event: 'teamSearch'
+  },
   methods: {
-    search(event) {
-      this.$emit('input', {
-        input: +this.$refs.searchInput.value
-      })
+    onInput(event) {
+      this.$emit('teamSearch', event.target.value)
     }
-  }
+  },
+  props: ['value']
 }
 </script>
 
 <style>
-
+input {
+  width: 80%;
+  margin: 0 auto !important;
+  border: 2px #374785 solid;
+  border-radius: 4px;
+}
 </style>
